@@ -3,6 +3,8 @@ package lr6;
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 
+import java.io.File;
+
 public class ServerLauncher {
     public static void main(String[] args) throws Exception {
 
@@ -11,10 +13,11 @@ public class ServerLauncher {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
 
-        Context context = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
-        context.setAddWebinfClassesResources(true);
+        // ПОДКЛЮЧАЕМ ПАПКУ web (ВАЖНО!)
+        String webappDir = new File("web").getAbsolutePath();
+        Context context = tomcat.addContext("", webappDir);
 
-        // ВАЖНО: через class name
+        // РЕГИСТРАЦИЯ СЕРВЛЕТА
         Tomcat.addServlet(context, "volumeServlet", "lr6.VolumeServlet");
         context.addServletMappingDecoded("/volume", "volumeServlet");
 
