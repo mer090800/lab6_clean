@@ -13,12 +13,15 @@ public class ServerLauncher {
         tomcat.setPort(port);
 
         String webappDir = new File("web").getAbsolutePath();
-if (!new File(webappDir).exists()) {
-    webappDir = new File(".").getAbsolutePath();
-}
+
+        File webDir = new File(webappDir);
+        if (!webDir.exists()) {
+            webappDir = new File(".").getAbsolutePath();
+        }
+
         tomcat.addWebapp("", webappDir);
 
-        System.out.println("Tomcat started on port " + port);
+        System.out.println("🔥 Tomcat started on port " + port);
 
         tomcat.start();
         tomcat.getServer().await();
