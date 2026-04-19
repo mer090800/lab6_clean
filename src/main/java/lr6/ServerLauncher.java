@@ -12,7 +12,7 @@ public class ServerLauncher {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
 
-        String webappDir = new File("web").getAbsolutePath();
+        String webappDir = new File("src/main/webapp").getAbsolutePath();
 
         File webDir = new File(webappDir);
         if (!webDir.exists()) {
