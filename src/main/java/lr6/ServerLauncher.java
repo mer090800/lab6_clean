@@ -11,12 +11,11 @@ public class ServerLauncher {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
 
-        // ПУСТОЙ контекст (без web папок вообще)
         Context context = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
         context.setAddWebinfClassesResources(true);
 
-        // Сервлет
-        Tomcat.addServlet(context, "volumeServlet", new VolumeServlet());
+        // ВАЖНО: через class name
+        Tomcat.addServlet(context, "volumeServlet", "lr6.VolumeServlet");
         context.addServletMappingDecoded("/volume", "volumeServlet");
 
         tomcat.getConnector();
