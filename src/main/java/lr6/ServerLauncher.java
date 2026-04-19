@@ -12,7 +12,7 @@ public class ServerLauncher {
         tomcat.setPort(port);
 
         // ПУСТОЙ контекст (без web папок вообще)
-        Context context = tomcat.addContext("", null);
+        Context context = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
 
         // Сервлет
         Tomcat.addServlet(context, "volumeServlet", new VolumeServlet());
