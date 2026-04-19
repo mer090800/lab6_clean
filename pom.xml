@@ -1,11 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" version="4.0.0">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>lab6</groupId>
     <artifactId>lab6</artifactId>
     <version>1.0</version>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -14,24 +18,25 @@
             <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>10.1.24</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>lab6</finalName>
         <plugins>
-    <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.1.0</version>
-        <configuration>
-            <mainClass>lr6.ServerLauncher</mainClass>
-        </configuration>
-    </plugin>
-</plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>lr6.ServerLauncher</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-    <dependency>
-    <groupId>org.apache.tomcat.embed</groupId>
-    <artifactId>tomcat-embed-core</artifactId>
-    <version>10.1.24</version>
-</dependency>
+
 </project>
