@@ -2,7 +2,6 @@ package lr6;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
-import java.io.File;
 
 public class ServerLauncher {
     public static void main(String[] args) throws Exception {
@@ -12,10 +11,10 @@ public class ServerLauncher {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
 
-        // ВАЖНО: указываем текущую папку как базу
-        String baseDir = new File("web").getAbsolutePath();
-        Context context = tomcat.addContext("", baseDir);
+        // ПУСТОЙ контекст (без web папок вообще)
+        Context context = tomcat.addContext("", null);
 
+        // Сервлет
         Tomcat.addServlet(context, "volumeServlet", new VolumeServlet());
         context.addServletMappingDecoded("/volume", "volumeServlet");
 
