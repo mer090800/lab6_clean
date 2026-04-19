@@ -1,7 +1,7 @@
 package lr6;
 
+import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
-import java.io.File;
 
 public class ServerLauncher {
     public static void main(String[] args) throws Exception {
@@ -11,10 +11,11 @@ public class ServerLauncher {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
 
-        // ВАЖНО: указываем ПРАВИЛЬНУЮ папку
-        String webappDir = new File("web").getAbsolutePath();
+        Context context = tomcat.addContext("", null);
 
-        tomcat.addWebapp("", webappDir);
+        // РЕГИСТРАЦИЯ СЕРВЛЕТА ВРУЧНУЮ
+        Tomcat.addServlet(context, "volumeServlet", new VolumeServlet());
+        context.addServletMappingDecoded("/volume", "volumeServlet");
 
         System.out.println("🔥 Tomcat started on port " + port);
 
