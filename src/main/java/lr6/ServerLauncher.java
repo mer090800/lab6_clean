@@ -13,7 +13,7 @@ public class ServerLauncher {
         tomcat.setPort(port);
 
         // ВАЖНО: указываем текущую папку как базу
-        String baseDir = new File(".").getAbsolutePath();
+        String baseDir = new File("web").getAbsolutePath();
         Context context = tomcat.addContext("", baseDir);
 
         Tomcat.addServlet(context, "volumeServlet", new VolumeServlet());
