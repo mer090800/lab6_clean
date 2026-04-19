@@ -14,8 +14,8 @@ public class ServerLauncher {
         tomcat.setPort(port);
 
         // ПОДКЛЮЧАЕМ ПАПКУ web (ВАЖНО!)
-        String webappDir = new File("web").getAbsolutePath();
-        Context context = tomcat.addContext("", webappDir);
+        String webappDir = new File("src/main/webapp").getAbsolutePath();
+Context context = tomcat.addContext("", webappDir);
 
         // РЕГИСТРАЦИЯ СЕРВЛЕТА
         Tomcat.addServlet(context, "volumeServlet", "lr6.VolumeServlet");
