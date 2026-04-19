@@ -4,7 +4,6 @@ import org.apache.catalina.startup.Tomcat;
 import java.io.File;
 
 public class ServerLauncher {
-
     public static void main(String[] args) throws Exception {
 
         int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8080"));
@@ -12,12 +11,8 @@ public class ServerLauncher {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
 
-        String webappDir = new File("src/main/webapp").getAbsolutePath();
-
-        File webDir = new File(webappDir);
-        if (!webDir.exists()) {
-            webappDir = new File(".").getAbsolutePath();
-        }
+        // ВАЖНО: указываем ПРАВИЛЬНУЮ папку
+        String webappDir = new File("web").getAbsolutePath();
 
         tomcat.addWebapp("", webappDir);
 
