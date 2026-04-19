@@ -13,12 +13,12 @@ public class ServerLauncher {
 
         Context context = tomcat.addContext("", null);
 
-        // РЕГИСТРАЦИЯ СЕРВЛЕТА ВРУЧНУЮ
+
         Tomcat.addServlet(context, "volumeServlet", new VolumeServlet());
         context.addServletMappingDecoded("/volume", "volumeServlet");
 
-        System.out.println("🔥 Tomcat started on port " + port);
-
+        System.out.println("Tomcat started on port " + port);
+tomcat.getConnector();
         tomcat.start();
         tomcat.getServer().await();
     }
